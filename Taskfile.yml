@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+  setup:
+    desc: Crea el entorno virtual de Python en la raiz del proyecto
+    cmds:
+      - test -f .venv/Scripts/python.exe || python -m venv .venv
+
+  install:
+    desc: Crea el entorno e instala las dependencias y el modelo de spaCy
+    deps:
+      - setup
+    cmds:
+      - .venv/Scripts/python.exe -m pip install -r requirements.txt
+      - .venv/Scripts/python.exe -c "import subprocess, sys, spacy; sys.exit(0 if spacy.util.is_package('es_core_news_md') else subprocess.call([sys.executable, '-m', 'spacy', 'download', 'es_core_news_md', '--no-cache-dir', '--retries', '5', '--timeout', '120']))"
+
+  search:
+    desc: Ejecuta el buscador dentro del entorno virtual
+    deps:
+      - setup
+    cmds:
+      - .venv/Scripts/python.exe scripts/index.py
+
+  train:
+    desc: Entrena los pesos dentro del entorno virtual
+    deps:
+      - setup
+    cmds:
+      - .venv/Scripts/python.exe scripts/train_weights.py

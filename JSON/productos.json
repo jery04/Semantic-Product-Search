@@ -1,0 +1,486 @@
+[
+  {
+    "titulo": "Laptop Gamer Pro",
+    "descripcion": "Potente computadora portátil con tarjeta gráfica RTX 3080 y procesador Intel i9."
+  },
+  {
+    "titulo": "Teclado Mecánico Inalámbrico",
+    "descripcion": "Teclado mecánico inalámbrico con iluminación RGB, conexión Bluetooth y batería recargable."
+  },
+  {
+    "titulo": "Mouse Trackball Ergonómico",
+    "descripcion": "Ratón trackball con control preciso, botones programables y diseño cómodo para largas jornadas."
+  },
+  {
+    "titulo": "Webcam 2K con Enfoque Automático",
+    "descripcion": "Cámara web con resolución 2K, enfoque automático, micrófonos dobles y cubierta de privacidad."
+  },
+  {
+    "titulo": "Auriculares Bluetooth Deportivos",
+    "descripcion": "Auriculares inalámbricos resistentes al sudor con ajuste seguro, controles táctiles y autonomía extendida."
+  },
+  {
+    "titulo": "Audífonos Intraurales con Cancelación",
+    "descripcion": "Auriculares compactos con cancelación activa de ruido, estuche de carga y modo transparencia."
+  },
+  {
+    "titulo": "Altavoz Inteligente",
+    "descripcion": "Altavoz conectado con control por voz, sonido de 360 grados y compatibilidad con dispositivos inteligentes."
+  },
+  {
+    "titulo": "Sistema NAS de Dos Bahías",
+    "descripcion": "Servidor de almacenamiento doméstico con dos bahías, copias de seguridad automáticas y acceso remoto."
+  },
+  {
+    "titulo": "SSD Externo de 2 TB",
+    "descripcion": "Unidad SSD portátil de 2 TB con conexión USB-C, altas velocidades de transferencia y carcasa resistente."
+  },
+  {
+    "titulo": "Disco Duro Interno 4 TB",
+    "descripcion": "Disco duro interno de 4 TB para almacenar archivos multimedia, proyectos y copias de seguridad."
+  },
+  {
+    "titulo": "Memoria USB de 1 TB",
+    "descripcion": "Unidad flash USB de gran capacidad con conexión USB 3.2 y diseño compacto para transportar archivos."
+  },
+  {
+    "titulo": "Tarjeta MicroSD de 1 TB",
+    "descripcion": "Tarjeta MicroSD de alta capacidad para cámaras, consolas portátiles, teléfonos y grabación de vídeo."
+  },
+  {
+    "titulo": "Router Wi-Fi 7",
+    "descripcion": "Router inalámbrico de nueva generación con múltiples bandas, baja latencia y conexión para muchos dispositivos."
+  },
+  {
+    "titulo": "Módem 5G Doméstico",
+    "descripcion": "Módem con conexión móvil 5G, Wi-Fi integrado y puertos Ethernet para acceso rápido a internet en casa."
+  },
+  {
+    "titulo": "Adaptador Ethernet USB-C",
+    "descripcion": "Adaptador USB-C a Gigabit Ethernet para conectar portátiles y tabletas a redes cableadas estables."
+  },
+  {
+    "titulo": "Regleta con Protección Eléctrica",
+    "descripcion": "Regleta con protección contra sobretensiones, seis tomas y puertos USB para cargar dispositivos."
+  },
+  {
+    "titulo": "Cargador Inalámbrico Rápido",
+    "descripcion": "Base de carga inalámbrica compatible con teléfonos y auriculares, con diseño antideslizante y carga rápida."
+  },
+  {
+    "titulo": "Cargador USB-C para Coche",
+    "descripcion": "Cargador de automóvil con dos puertos USB-C y tecnología de carga rápida para móviles y tabletas."
+  },
+  {
+    "titulo": "Estación de Energía Portátil",
+    "descripcion": "Batería portátil de gran capacidad con tomas de corriente, puertos USB y pantalla de carga restante."
+  },
+  {
+    "titulo": "Tableta de 12 Pulgadas",
+    "descripcion": "Tableta de pantalla amplia con resolución alta, procesador multinúcleo y compatibilidad con teclado."
+  },
+  {
+    "titulo": "Lector Electrónico a Color",
+    "descripcion": "Lector de libros con pantalla de tinta electrónica a color, iluminación frontal y almacenamiento amplio."
+  },
+  {
+    "titulo": "Smartphone Resistente 5G",
+    "descripcion": "Teléfono inteligente resistente al agua y a los golpes, con conectividad 5G y batería de larga duración."
+  },
+  {
+    "titulo": "Reloj Inteligente AMOLED",
+    "descripcion": "Reloj deportivo con pantalla AMOLED, GPS, notificaciones del teléfono y seguimiento de salud."
+  },
+  {
+    "titulo": "Cámara de Acción 4K",
+    "descripcion": "Cámara compacta para aventuras con grabación 4K, estabilización electrónica y carcasa impermeable."
+  },
+  {
+    "titulo": "Trípode para Cámara",
+    "descripcion": "Trípode ajustable de aluminio con cabeza giratoria, patas plegables y soporte para cámaras y móviles."
+  },
+  {
+    "titulo": "Tarjeta Capturadora HDMI",
+    "descripcion": "Dispositivo de captura de vídeo HDMI para transmitir y grabar consolas, cámaras y ordenadores."
+  },
+  {
+    "titulo": "Impresora Láser Monocromática",
+    "descripcion": "Impresora láser rápida para documentos en blanco y negro con conexión Wi-Fi y bandeja de alta capacidad."
+  },
+  {
+    "titulo": "Escáner Portátil",
+    "descripcion": "Escáner ligero alimentado por USB para digitalizar documentos, recibos y fotografías mientras viajas."
+  },
+  {
+    "titulo": "Impresora 3D de Resina",
+    "descripcion": "Impresora 3D de resina con alta precisión, pantalla monocromática y plataforma de impresión nivelable."
+  },
+  {
+    "titulo": "Consola Portátil Retro",
+    "descripcion": "Consola portátil compacta con pantalla integrada, controles físicos y biblioteca de juegos clásicos."
+  },
+  {
+    "titulo": "Mando Arcade USB",
+    "descripcion": "Control arcade con palanca y botones mecánicos, conexión USB y compatibilidad con ordenador y consola."
+  },
+  {
+    "titulo": "Base de Carga para Mandos",
+    "descripcion": "Estación de carga para dos controladores inalámbricos con indicadores LED y diseño compacto."
+  },
+  {
+    "titulo": "Volante Gaming con Pedales",
+    "descripcion": "Volante para simulación con retroalimentación de fuerza, pedales ajustables y compatibilidad con PC y consola."
+  },
+  {
+    "titulo": "Alfombrilla Gaming XL",
+    "descripcion": "Superficie extragrande para teclado y ratón con base antideslizante y bordes cosidos resistentes."
+  },
+  {
+    "titulo": "Silla Gaming Reclinable",
+    "descripcion": "Silla para videojuegos con respaldo reclinable, cojines lumbares y reposabrazos ajustables."
+  },
+  {
+    "titulo": "Soporte Vertical para Laptop",
+    "descripcion": "Soporte de aluminio para colocar el portátil verticalmente y liberar espacio en el escritorio."
+  },
+  {
+    "titulo": "Organizador de Cables",
+    "descripcion": "Kit de gestión de cables con clips adhesivos, fundas y pasacables para mantener el escritorio ordenado."
+  },
+  {
+    "titulo": "Luz de Monitor",
+    "descripcion": "Barra de iluminación para monitor con brillo regulable, temperatura ajustable y control táctil."
+  },
+  {
+    "titulo": "Ventilador USB de Escritorio",
+    "descripcion": "Ventilador compacto con alimentación USB, tres velocidades y funcionamiento silencioso para la oficina."
+  },
+  {
+    "titulo": "Cámara de Seguridad Interior",
+    "descripcion": "Cámara doméstica con vídeo Full HD, visión nocturna, detección de movimiento y audio bidireccional."
+  },
+  {
+    "titulo": "Cerradura Inteligente",
+    "descripcion": "Cerradura electrónica con acceso mediante aplicación, teclado numérico y registro de entradas."
+  },
+  {
+    "titulo": "Timbre Inteligente con Cámara",
+    "descripcion": "Timbre conectado con vídeo, detección de movimiento, audio bidireccional y alertas al teléfono."
+  },
+  {
+    "titulo": "Sensor de Movimiento Wi-Fi",
+    "descripcion": "Sensor inalámbrico para automatización del hogar con alertas móviles y configuración sencilla."
+  },
+  {
+    "titulo": "Bombilla Inteligente Wi-Fi",
+    "descripcion": "Bombilla LED regulable con control desde el móvil, programación horaria y compatibilidad con asistentes de voz."
+  },
+  {
+    "titulo": "Termostato Inteligente",
+    "descripcion": "Termostato conectado con programación semanal, control remoto y ahorro energético para el hogar."
+  },
+  {
+    "titulo": "Proyector Portátil",
+    "descripcion": "Proyector compacto con batería integrada, resolución HD, altavoz y conexión inalámbrica."
+  },
+  {
+    "titulo": "Pantalla de Proyección",
+    "descripcion": "Pantalla enrollable para proyector con superficie mate, formato panorámico y montaje en pared o techo."
+  },
+  {
+    "titulo": "Cable HDMI 2.1",
+    "descripcion": "Cable HDMI de alta velocidad compatible con resolución 8K, HDR, consolas y televisores modernos."
+  },
+  {
+    "titulo": "Switch HDMI de Cuatro Puertos",
+    "descripcion": "Conmutador HDMI para conectar varias fuentes de vídeo a una pantalla con mando a distancia incluido."
+  },
+  {
+    "titulo": "Adaptador Bluetooth USB",
+    "descripcion": "Adaptador Bluetooth compacto para añadir conectividad inalámbrica a ordenadores de escritorio y portátiles."
+  },
+  {
+    "titulo": "Laptop Ultraligera",
+    "descripcion": "Portátil delgada con procesador Intel Core i7, 16 GB de RAM y batería para toda la jornada."
+  },
+  {
+    "titulo": "Laptop para Diseño 3D",
+    "descripcion": "Computadora portátil profesional con GPU dedicada, pantalla de alta fidelidad de color y almacenamiento SSD."
+  },
+  {
+    "titulo": "Mini PC de Escritorio",
+    "descripcion": "Equipo compacto y silencioso con procesador AMD Ryzen 7, 32 GB de RAM y conectividad Wi-Fi 6."
+  },
+  {
+    "titulo": "PC de Escritorio para Oficina",
+    "descripcion": "Computadora de escritorio eficiente para teletrabajo, videollamadas, documentos y navegación."
+  },
+  {
+    "titulo": "Monitor 4K UHD",
+    "descripcion": "Pantalla de 27 pulgadas con resolución 3840x2160 y tecnología IPS para colores vivos."
+  },
+  {
+    "titulo": "Monitor Ultrapanorámico",
+    "descripcion": "Monitor curvo de 34 pulgadas con formato 21:9, resolución WQHD y espacio amplio para trabajar."
+  },
+  {
+    "titulo": "Monitor Gaming 240 Hz",
+    "descripcion": "Pantalla Full HD de alta velocidad con frecuencia de actualización de 240 Hz y tiempo de respuesta reducido."
+  },
+  {
+    "titulo": "Monitor Portátil USB-C",
+    "descripcion": "Pantalla externa ligera de 15,6 pulgadas que se conecta por USB-C para ampliar tu espacio de trabajo."
+  },
+  {
+    "titulo": "Teclado Mecánico RGB",
+    "descripcion": "Teclado retroiluminado con switches azules táctiles ideal para gaming y escritura prolongada."
+  },
+  {
+    "titulo": "Teclado Inalámbrico Compacto",
+    "descripcion": "Teclado Bluetooth de perfil bajo con distribución en español, batería recargable y diseño minimalista."
+  },
+  {
+    "titulo": "Teclado Ergonómico Dividido",
+    "descripcion": "Teclado ergonómico con distribución separada, reposamuñecas acolchado y teclas programables."
+  },
+  {
+    "titulo": "Mouse Inalámbrico",
+    "descripcion": "Ratón ergonómico de 1600 DPI, conexión Bluetooth y batería de larga duración."
+  },
+  {
+    "titulo": "Mouse Gaming de Precisión",
+    "descripcion": "Ratón para videojuegos con sensor óptico de 26000 DPI, ocho botones configurables e iluminación RGB."
+  },
+  {
+    "titulo": "Mouse Ergonómico Vertical",
+    "descripcion": "Ratón vertical diseñado para reducir la tensión de la muñeca, con conexión inalámbrica y botones laterales."
+  },
+  {
+    "titulo": "Silla Ergonómica",
+    "descripcion": "Silla de oficina con soporte lumbar ajustable, reposabrazos 4D y respaldo transpirable."
+  },
+  {
+    "titulo": "Webcam Full HD",
+    "descripcion": "Cámara web de 1080p con micrófono integrado, corrección automática de luz y cubierta de privacidad."
+  },
+  {
+    "titulo": "Webcam 4K para Streaming",
+    "descripcion": "Cámara para videollamadas y transmisiones con resolución 4K, enfoque automático y encuadre inteligente."
+  },
+  {
+    "titulo": "Micrófono USB de Condensador",
+    "descripcion": "Micrófono de escritorio con patrón cardioide, control de ganancia y salida para auriculares."
+  },
+  {
+    "titulo": "Auriculares Inalámbricos",
+    "descripcion": "Auriculares Bluetooth con cancelación activa de ruido, modo ambiente y hasta 30 horas de autonomía."
+  },
+  {
+    "titulo": "Auriculares Gaming con Micrófono",
+    "descripcion": "Audífonos para videojuegos con sonido envolvente, micrófono flexible y conexión de baja latencia."
+  },
+  {
+    "titulo": "Altavoces Estéreo de Escritorio",
+    "descripcion": "Par de altavoces compactos con sonido estéreo, conexión auxiliar y control de volumen frontal."
+  },
+  {
+    "titulo": "Barra de Sonido Bluetooth",
+    "descripcion": "Barra de sonido para escritorio o televisor con conexión Bluetooth, entrada óptica y graves mejorados."
+  },
+  {
+    "titulo": "Disco SSD Externo 1 TB",
+    "descripcion": "Unidad de almacenamiento portátil con transferencia rápida por USB-C, resistente a golpes y de tamaño compacto."
+  },
+  {
+    "titulo": "Disco Duro Externo 4 TB",
+    "descripcion": "Almacenamiento externo de gran capacidad para copias de seguridad, fotografías, vídeos y archivos pesados."
+  },
+  {
+    "titulo": "Memoria USB 256 GB",
+    "descripcion": "Unidad flash USB 3.2 con carcasa metálica y espacio suficiente para transportar documentos y contenido multimedia."
+  },
+  {
+    "titulo": "Tarjeta MicroSD 512 GB",
+    "descripcion": "Tarjeta de memoria de alta capacidad para cámaras, consolas portátiles, teléfonos y dispositivos compatibles."
+  },
+  {
+    "titulo": "Router Wi-Fi 6",
+    "descripcion": "Router de doble banda con cobertura amplia, menor latencia y capacidad para conectar muchos dispositivos."
+  },
+  {
+    "titulo": "Sistema Wi-Fi Mesh",
+    "descripcion": "Kit de nodos inalámbricos para eliminar zonas sin cobertura y ofrecer una red estable en toda la vivienda."
+  },
+  {
+    "titulo": "Adaptador USB-C Multipuerto",
+    "descripcion": "Hub con HDMI, USB 3.0, lector de tarjetas y carga rápida para ampliar las conexiones de un portátil."
+  },
+  {
+    "titulo": "Estación de Acoplamiento Thunderbolt",
+    "descripcion": "Base de conexión profesional con varios puertos, salida para dos monitores y carga para equipos compatibles."
+  },
+  {
+    "titulo": "Cargador GaN de 100 W",
+    "descripcion": "Cargador compacto con tecnología de nitruro de galio, varios puertos USB-C y carga rápida para portátil y móvil."
+  },
+  {
+    "titulo": "Batería Externa de 20000 mAh",
+    "descripcion": "Power bank con carga rápida, dos puertos USB y capacidad para recargar teléfonos y tabletas durante viajes."
+  },
+  {
+    "titulo": "Tableta de 11 Pulgadas",
+    "descripcion": "Tableta con pantalla de alta resolución, ocho núcleos de procesamiento, lápiz digital compatible y batería duradera."
+  },
+  {
+    "titulo": "Lector de Libros Electrónicos",
+    "descripcion": "Dispositivo ligero con pantalla de tinta electrónica sin reflejos, iluminación regulable y semanas de autonomía."
+  },
+  {
+    "titulo": "Smartphone 5G",
+    "descripcion": "Teléfono inteligente con pantalla OLED, cámara múltiple, conectividad 5G y almacenamiento interno de 256 GB."
+  },
+  {
+    "titulo": "Reloj Inteligente Deportivo",
+    "descripcion": "Reloj con GPS, seguimiento de actividad física, medición de ritmo cardíaco y resistencia al agua."
+  },
+  {
+    "titulo": "Cámara Sin Espejo",
+    "descripcion": "Cámara digital con sensor de alta resolución, grabación de vídeo 4K y objetivos intercambiables."
+  },
+  {
+    "titulo": "Impresora Multifunción Wi-Fi",
+    "descripcion": "Impresora con funciones de escaneo y copia, conexión inalámbrica y sistema de tinta de bajo consumo."
+  },
+  {
+    "titulo": "Impresora 3D de Escritorio",
+    "descripcion": "Impresora 3D de filamento con nivelación automática, volumen amplio de impresión y recuperación ante cortes de energía."
+  },
+  {
+    "titulo": "Consola de Videojuegos",
+    "descripcion": "Consola de nueva generación con gráficos en alta resolución, almacenamiento SSD y biblioteca de juegos digitales."
+  },
+  {
+    "titulo": "Mando Inalámbrico",
+    "descripcion": "Controlador Bluetooth con vibración háptica, botones configurables y batería recargable para ordenador y consola."
+  },
+  {
+    "titulo": "Gafas de Realidad Virtual",
+    "descripcion": "Visor inalámbrico de realidad virtual con seguimiento espacial, audio integrado y controles incluidos."
+  },
+  {
+    "titulo": "Cámara de Seguridad Exterior",
+    "descripcion": "Cámara inteligente resistente a la intemperie con visión nocturna, detección de movimiento y alertas al móvil."
+  },
+  {
+    "titulo": "Enchufe Inteligente",
+    "descripcion": "Enchufe conectado por Wi-Fi para controlar dispositivos a distancia, crear horarios y medir el consumo eléctrico."
+  },
+  {
+    "titulo": "Kit de Iluminación LED Inteligente",
+    "descripcion": "Bombillas LED regulables con control desde el móvil, escenas de color y compatibilidad con asistentes de voz."
+  },
+  {
+    "titulo": "Proyector Full HD",
+    "descripcion": "Proyector doméstico con resolución Full HD, altavoz integrado, corrección trapezoidal y conexión inalámbrica."
+  },
+  {
+    "titulo": "Repetidor Wi-Fi",
+    "descripcion": "Extensor de señal inalámbrica de doble banda para mejorar la cobertura en habitaciones alejadas del router."
+  },
+  {
+    "titulo": "Laptop Empresarial",
+    "descripcion": "Portátil profesional con procesador Intel Core i5, lector de huellas, cámara HD y batería de larga duración."
+  },
+  {
+    "titulo": "Monitor para Programación",
+    "descripcion": "Monitor de 27 pulgadas con panel IPS, resolución QHD, modo lectura y soporte ajustable."
+  },
+  {
+    "titulo": "Teclado Numérico USB",
+    "descripcion": "Teclado numérico externo compacto con conexión USB y teclas silenciosas para hojas de cálculo."
+  },
+  {
+    "titulo": "Mouse Inalámbrico Silencioso",
+    "descripcion": "Ratón inalámbrico silencioso con sensor preciso, diseño ambidiestro y batería de larga duración."
+  },
+  {
+    "titulo": "Escritorio Elevable",
+    "descripcion": "Mesa de trabajo eléctrica con altura regulable, memoria de posiciones y superficie amplia."
+  },
+  {
+    "titulo": "Auriculares con Micrófono",
+    "descripcion": "Auriculares con diadema cómoda, micrófono con cancelación de ruido y conexión para videollamadas."
+  },
+  {
+    "titulo": "Barra de Sonido para TV",
+    "descripcion": "Barra de sonido con subwoofer inalámbrico, HDMI ARC, Bluetooth y modos de cine."
+  },
+  {
+    "titulo": "SSD NVMe 2 TB",
+    "descripcion": "Unidad SSD interna NVMe de 2 TB con velocidades de lectura altas para equipos de escritorio y portátiles."
+  },
+  {
+    "titulo": "Memoria RAM DDR5 32 GB",
+    "descripcion": "Kit de memoria DDR5 de 32 GB para actualizar ordenadores compatibles y mejorar la multitarea."
+  },
+  {
+    "titulo": "Switch de Red Gigabit",
+    "descripcion": "Conmutador Ethernet de ocho puertos Gigabit para conectar ordenadores, impresoras y cámaras."
+  },
+  {
+    "titulo": "Cable USB-C de Carga",
+    "descripcion": "Cable USB-C trenzado compatible con carga rápida y transferencia de datos para móviles y portátiles."
+  },
+  {
+    "titulo": "Base Refrigeradora para Laptop",
+    "descripcion": "Soporte para portátil con ventiladores silenciosos, inclinación ajustable y puertos USB adicionales."
+  },
+  {
+    "titulo": "Tablet Gráfica",
+    "descripcion": "Tableta digitalizadora con lápiz sensible a la presión y área amplia para ilustración y diseño."
+  },
+  {
+    "titulo": "Cámara Web con Tapa",
+    "descripcion": "Webcam Full HD con enfoque automático, micrófonos estéreo y cubierta física de privacidad."
+  },
+  {
+    "titulo": "Lámpara de Escritorio LED",
+    "descripcion": "Lámpara LED regulable con temperatura de color ajustable, temporizador y puerto USB de carga."
+  },
+  {
+    "titulo": "Regleta Inteligente",
+    "descripcion": "Regleta con protección contra sobretensiones, control Wi-Fi, temporizadores y cuatro tomas."
+  },
+  {
+    "titulo": "Disco Duro Interno 2 TB",
+    "descripcion": "Disco duro interno de 2 TB para ampliar el almacenamiento de un ordenador de escritorio."
+  },
+  {
+    "titulo": "Lector de Tarjetas USB",
+    "descripcion": "Lector externo USB compatible con tarjetas SD y MicroSD para cámaras, móviles y ordenadores."
+  },
+  {
+    "titulo": "Hub USB 3.0",
+    "descripcion": "Concentrador USB 3.0 de cuatro puertos con diseño compacto para conectar periféricos."
+  },
+  {
+    "titulo": "Soporte para Monitor",
+    "descripcion": "Brazo articulado para monitor con ajuste de altura, giro y compatibilidad VESA."
+  },
+  {
+    "titulo": "Micrófono de Solapa",
+    "descripcion": "Micrófono lavalier compacto con captación clara para entrevistas, clases y grabación de vídeo."
+  },
+  {
+    "titulo": "Impresora de Etiquetas",
+    "descripcion": "Impresora térmica compacta para etiquetas, organización de paquetes y códigos de barras."
+  },
+  {
+    "titulo": "Escáner de Documentos",
+    "descripcion": "Escáner de documentos con alimentación automática, doble cara y conexión USB."
+  },
+  {
+    "titulo": "Disco SSD Interno 1 TB",
+    "descripcion": "SSD interno de 1 TB con arranque rápido, bajo consumo y compatibilidad con ordenadores de escritorio."
+  }
+]
