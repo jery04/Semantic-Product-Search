@@ -1,59 +1,59 @@
-# 🛒 Buscador semantico de productos
+# 🛒 Semantic Product Search
 
-Proyecto en Python que utiliza spaCy y el modelo `es_core_news_md` para buscar productos mediante similitud semantica, coincidencia de terminos y coincidencia de n-gramas. Tambien incluye un script para entrenar los pesos del buscador con un algoritmo genetico.
+Python project that uses spaCy and the `es_core_news_md` model to search products by semantic similarity, term matching, and n-gram matching. It also includes a script to train the search weights using a genetic algorithm.
 
-## 📁 Estructura del proyecto
+## 📁 Project structure
 
 ```text
 .
 ├── JSON/
-│   ├── best_weights.json   # Historial de pesos entrenados
-│   ├── productos.json       # Catalogo de productos
-│   └── queries.json         # Consultas etiquetadas para entrenamiento
+│   ├── best_weights.json   # History of trained weights
+│   ├── productos.json       # Product catalog
+│   └── queries.json         # Labeled queries for training
 ├── scripts/
-│   ├── index.py             # Busqueda semantica de productos
-│   └── train_weights.py     # Entrenamiento y evaluacion de pesos
-├── README.md                # Documentacion del proyecto
-├── requirements.txt         # Dependencias de Python
-├── Taskfile.yml             # Tareas automatizadas
-├── .gitignore               # Exclusiones del entorno y archivos temporales
-└── .venv/                   # Entorno virtual local, ignorado por Git
+│   ├── index.py             # Semantic product search
+│   └── train_weights.py     # Weight training and evaluation
+├── README.md                # Project documentation
+├── requirements.txt         # Python dependencies
+├── Taskfile.yml             # Automated tasks
+├── .gitignore               # Environment and temporary file exclusions
+└── .venv/                   # Local virtual environment, ignored by Git
 ```
 
-## ⚙️ Que hace cada script
+## ⚙️ What each script does
 
 ### 🔎 `scripts/index.py`
 
-Carga el catalogo desde `JSON/productos.json`, procesa los textos con spaCy y ejecuta una consulta de ejemplo (`MicroSD 512 GB`). Muestra los tres productos mejor posicionados junto con su puntuacion y el detalle de los componentes de la puntuacion.
+Loads the catalog from `JSON/productos.json`, processes the text with spaCy, and runs a sample query (`MicroSD 512 GB`). It shows the top three ranked products along with their score and a breakdown of the score components.
 
 ### 🧬 `scripts/train_weights.py`
 
-Carga el catalogo y las consultas etiquetadas, divide las consultas en conjuntos de entrenamiento y prueba, y optimiza los seis pesos del buscador mediante un algoritmo genetico. Guarda cada resultado en `JSON/best_weights.json` y muestra una comparacion entre los pesos originales y los entrenados.
+Loads the catalog and labeled queries, splits the queries into training and test sets, and optimizes the six search weights using a genetic algorithm. It saves each result in `JSON/best_weights.json` and shows a comparison between the original and trained weights.
 
-## 📦 Instalacion de dependencias (con Taskfile)
+## 📦 Installing dependencies (with Taskfile)
 
-Desde la raiz del proyecto, crea primero el entorno e instala todo con:
+From the project root, first create the environment and install everything with:
 
 ```bash
 task install
 ```
 
-Esta tarea crea `.venv`, instala las dependencias de `requirements.txt` usando ese entorno y descarga el modelo de espanol de spaCy dentro del mismo entorno.
+This task creates `.venv`, installs the dependencies from `requirements.txt` in that environment, and downloads the Spanish spaCy model inside the same environment.
 
-## ▶️ Ejecucion
+## ▶️ Running the project
 
-Ejecuta los comandos desde la raiz del proyecto, despues de instalar las dependencias.
+Run the commands from the project root after installing the dependencies.
 
-### 🔍 Buscador
+### 🔍 Search
 
 ```bash
 task search
 ```
 
-### 🧠 Entrenamiento de pesos
+### 🧠 Weight training
 
 ```bash
 task train
 ```
 
-El entrenamiento actualiza `JSON/best_weights.json` con un nuevo registro de resultados.
+The training step updates `JSON/best_weights.json` with a new result entry.
