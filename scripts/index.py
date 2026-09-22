@@ -31,7 +31,7 @@ except OSError:
 MAX_NGRAMS = 4
 
 # Define weights for each final score component.
-WEIGHTS = {
+DEFAULT_WEIGHTS = {
     "title_similarity":     0.15,
     "description_similarity": 0.10,
     "title_match":          0.50,
@@ -39,6 +39,30 @@ WEIGHTS = {
     "title_ngram_match":     0.10,
     "description_ngram_match": 0.10,
 }
+
+
+def load_saved_weights():
+    """Load the latest trained weights from the JSON history if available."""
+    weights_path = Path(__file__).resolve().parent.parent / "JSON" / "best_weights.json"
+    if not weights_path.exists() or weights_path.stat().st_size == 0:
+        return DEFAULT_WEIGHTS
+
+    try:
+        with weights_path.open("r", encoding="utf-8") as file:
+            payload = json.load(file)
+    except (json.JSONDecodeError, OSError):
+        return DEFAULT_WEIGHTS
+
+    if isinstance(payload, list) and payload:
+        payload = payload[0]
+    if isinstance(payload, dict) and "weights" in payload:
+        weights = payload["weights"]
+        if isinstance(weights, dict):
+            return {key: float(value) for key, value in weights.items()}
+    return DEFAULT_WEIGHTS
+
+
+WEIGHTS = load_saved_weights()
 
 
 # --------------------------------------------------------------
@@ -208,4 +232,3 @@ best_matches = search_products(products_for_search, user_query, top_k=3)
 for index, result in enumerate(best_matches, 1):
     print(f"#{index} {result['titulo']} (Score: {result['score']:.4f})")
     print(f"   Description: {result['descripcion'][:80]}...")
-    

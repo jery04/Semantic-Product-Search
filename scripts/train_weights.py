@@ -8,6 +8,7 @@ etiquetado por humanos (recomendado: al menos 50-100 consultas).
 
 from __future__ import annotations          # Enables postponed evaluation of type annotations (PEP 563), allowing forward references without quotes
                                             # (blank line separating standard library imports from third-party ones)
+import argparse                             # Parse command-line options for training execution
 import json                                 # Standard library for working with JSON data (encoding/decoding)
 import math                                 # Standard library providing mathematical functions (e.g., sqrt, log, exp)
 import random                               # Standard library for generating random numbers and random choices
@@ -32,6 +33,7 @@ MUTATION_SIGMA = 0.12                   # Standard deviation used for Gaussian m
 RANDOM_IMMIGRANT_RATE = 0.10            # Fraction of the population replaced by random new individuals each generation
 STAGNATION_LIMIT = 8                    # Number of generations without improvement before stopping (early stopping)
 IMPROVEMENT_TOLERANCE = 1e-4            # Minimum change in fitness considered an actual improvement (0.0001)
+CHECKPOINT_PATH = Path(__file__).resolve().parent.parent / "JSON" / "best_weights_checkpoint.json"
 
 # Pesos heredados del buscador original. Su suma es 1.20; se conservan como
 # baseline para no cambiar el comportamiento histórico. Todo genoma generado
@@ -50,6 +52,10 @@ WEIGHT_NAMES = tuple(WEIGHTS)
 # densidad de resultados relevantes en el corte elegido.
 FITNESS_COMPONENTS = {"ndcg": 0.5, "mrr": 0.3, "precision": 0.2}
 TRAINING_QUERIES: list[dict[str, Any]] = []
+
+parser = argparse.ArgumentParser(description="Entrena los pesos del buscador semántico.")
+parser.add_argument("--quiet", action="store_true", help="Reduce la salida de consola para facilitar ejecuciones largas.")
+parser.add_argument("--generations", type=int, default=GENERATIONS, help="Número máximo de generaciones del algoritmo genético.")
 
 
 def load_resources() -> tuple[Any, list[dict[str, str]]]:
@@ -320,6 +326,9 @@ def genetic_algorithm(
     products_details: Sequence[tuple[Any, ...]],
     train_queries: Sequence[dict[str, Any]],
     rng: random.Random,
+    *,
+    verbose: bool = True,
+    max_generations: int = GENERATIONS,
 ) -> tuple[list[float], float, float, int]:
     """Optimiza los seis pesos con torneo, cruce, mutación y elitismo."""
     population = make_initial_population(rng)
@@ -328,7 +337,7 @@ def genetic_algorithm(
     mean_fitness = float("-inf")
     stagnant_generations = 0
     completed_generations = 0
-    for generation in range(1, GENERATIONS + 1):
+    for generation in range(1, max_generations + 1):
         scored = [
             (evaluate_individual(genome, products_details, train_queries), genome)
             for genome in population
@@ -338,22 +347,29 @@ def genetic_algorithm(
         current_fitness, current_genome = scored[0]
         mean_fitness = statistics.fmean(fitnesses)
         best_weights = dict(zip(WEIGHT_NAMES, current_genome))
-        print(
-            f"gen={generation:02d}: best={current_fitness:.4f} "
-            f"; mean={statistics.fmean(fitnesses):.4f} "
-            f"; std={statistics.pstdev(fitnesses):.4f} "
-            f"; {{ ts={best_weights['title_similarity']:.4f} , "
-            f"ds={best_weights['description_similarity']:.4f} , "
-            f"tm={best_weights['title_match']:.4f} , "
-            f"dm={best_weights['description_match']:.4f} , "
-            f"tn={best_weights['title_ngram_match']:.4f} , "
-            f"dn={best_weights['description_ngram_match']:.4f} }}"
-        )
+        if verbose and (generation == 1 or generation == max_generations or generation % 5 == 0):
+            print(
+                f"gen={generation:02d}: best={current_fitness:.4f} "
+                f"; mean={statistics.fmean(fitnesses):.4f} "
+                f"; std={statistics.pstdev(fitnesses):.4f} "
+                f"; {{ ts={best_weights['title_similarity']:.4f} , "
+                f"ds={best_weights['description_similarity']:.4f} , "
+                f"tm={best_weights['title_match']:.4f} , "
+                f"dm={best_weights['description_match']:.4f} , "
+                f"tn={best_weights['title_ngram_match']:.4f} , "
+                f"dn={best_weights['description_ngram_match']:.4f} }}"
+            )
         completed_generations = generation
         if current_fitness > best_fitness + IMPROVEMENT_TOLERANCE:
             best_fitness = current_fitness
             best_genome = list(current_genome)
             stagnant_generations = 0
+            save_checkpoint(
+                dict(zip(WEIGHT_NAMES, normalize_genome(best_genome))),
+                best_fitness,
+                mean_fitness,
+                generation,
+            )
         else:
             stagnant_generations += 1
         if stagnant_generations >= STAGNATION_LIMIT:
@@ -416,6 +432,19 @@ def save_best_weights(
         f"Historial total: {len(history)} entrenamientos."
     )
 
+
+def save_checkpoint(weights: dict[str, float], best: float, mean: float, generations: int) -> None:
+    """Guarda la mejor combinación actual para poder recuperarla si el proceso se interrumpe."""
+    payload = {
+        "weights": weights,
+        "best": best,
+        "mean": mean,
+        "generations": generations,
+        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    with CHECKPOINT_PATH.open("w", encoding="utf-8") as file:
+        json.dump(payload, file, ensure_ascii=False, indent=2)
+
 def _metrics_for_queries_and_print(
     products_details: Sequence[tuple[Any, ...]], train_queries: Sequence[dict[str, Any]],
     test_queries: Sequence[dict[str, Any]], trained_weights: dict[str, float],
@@ -447,37 +476,50 @@ def _metrics_for_queries_and_print(
 def main() -> None:
     """Carga recursos, entrena, evalúa y guarda los pesos."""
     global NLP, TRAINING_QUERIES
-    print("Cargando modelo spaCy...")
-    NLP, products = load_resources()
-    print("Cargando catálogo de productos...")
-    products_for_search = build_search_index(NLP, products)
-    print("Cargando y expandiendo consultas...")
-    TRAINING_QUERIES = _load_queries()
-    rng = random.Random(SEED)
-    rng.shuffle(TRAINING_QUERIES)
-    print("Dividiendo train/test...")
-    split = max(1, int(len(TRAINING_QUERIES) * 0.7))
-    train_queries, test_queries = TRAINING_QUERIES[:split], TRAINING_QUERIES[split:]
-    print("Generando población inicial...")
-    print("Iniciando evolución...")
-    print(
-        "Leyenda: ts=title_similarity, ds=description_similarity, "
-        "tm=title_match, dm=description_match, tn=title_ngram_match, "
-        "dn=description_ngram_match\n"
-    )
-    trained_genome, best, mean, generations = genetic_algorithm(
-        products_for_search, train_queries, rng
-    )
-    trained_weights = dict(zip(WEIGHT_NAMES, trained_genome))
-    print("Evaluación final...")
-    print("Guardando pesos en best_weights.json...")
-    save_best_weights(
-        trained_weights, best, mean, generations,
-    )
-    _metrics_for_queries_and_print(
-        products_for_search, train_queries, test_queries, trained_weights
-    )
-    print("\nPesos guardados en best_weights.json")
+    args = parser.parse_args()
+    quiet = args.quiet
+    max_generations = args.generations
+    try:
+        if quiet:
+            print("Modo silencioso activado: se reducirá la salida de entrenamiento.")
+        print("Cargando modelo spaCy...")
+        NLP, products = load_resources()
+        print("Cargando catálogo de productos...")
+        products_for_search = build_search_index(NLP, products)
+        print("Cargando y expandiendo consultas...")
+        TRAINING_QUERIES = _load_queries()
+        rng = random.Random(SEED)
+        rng.shuffle(TRAINING_QUERIES)
+        print("Dividiendo train/test...")
+        split = max(1, int(len(TRAINING_QUERIES) * 0.7))
+        train_queries, test_queries = TRAINING_QUERIES[:split], TRAINING_QUERIES[split:]
+        print("Generando población inicial...")
+        print("Iniciando evolución...")
+        if not quiet:
+            print(
+                "Leyenda: ts=title_similarity, ds=description_similarity, "
+                "tm=title_match, dm=description_match, tn=title_ngram_match, "
+                "dn=description_ngram_match\n"
+            )
+        trained_genome, best, mean, generations = genetic_algorithm(
+            products_for_search, train_queries, rng, verbose=not quiet, max_generations=max_generations
+        )
+        trained_weights = dict(zip(WEIGHT_NAMES, trained_genome))
+        print("Evaluación final...")
+        print("Guardando pesos en best_weights.json...")
+        save_best_weights(
+            trained_weights, best, mean, generations,
+        )
+        _metrics_for_queries_and_print(
+            products_for_search, train_queries, test_queries, trained_weights
+        )
+        print("\nPesos guardados en best_weights.json")
+    except KeyboardInterrupt:
+        print("\nInterrupción detectada: guardando checkpoint del mejor estado disponible...")
+        if "best_genome" in locals():
+            last_best = dict(zip(WEIGHT_NAMES, normalize_genome(best_genome)))
+            save_checkpoint(last_best, float(best_fitness), float(mean_fitness), int(generations) if 'generations' in locals() else 0)
+        raise
 
 NLP: Any = None
 

@@ -1,0 +1,14 @@
+{
+  "weights": {
+    "title_similarity": 0.14293524048652295,
+    "description_similarity": 0.04374225559269088,
+    "title_match": 0.6102422898641867,
+    "description_match": 0.025663415356183855,
+    "title_ngram_match": 0.019780739955275933,
+    "description_ngram_match": 0.15763605874513964
+  },
+  "best": 0.7153715805509424,
+  "mean": 0.6484959413434751,
+  "generations": 1,
+  "date": "2026-09-22 16:27:51"
+}
