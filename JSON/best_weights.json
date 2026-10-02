@@ -1,16 +1,226 @@
 [
-    {
-        "weights": {
-            "title_similarity": 0.14293524048652295,
-            "description_similarity": 0.04374225559269088,
-            "title_match": 0.6102422898641867,
-            "description_match": 0.025663415356183855,
-            "title_ngram_match": 0.019780739955275933,
-            "description_ngram_match": 0.15763605874513964
-        },
-        "best": 0.7153715805509424,
-        "mean": 0.6484959413434751,
-        "generations": 1,
-        "date": "2026-09-22 16:27:51"
-    }
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 37,
+    "date": "2026-10-01 23:35:00"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 36,
+    "date": "2026-10-01 15:03:05"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 36,
+    "date": "2026-09-30 23:20:30"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 35,
+    "date": "2026-09-30 16:45:48"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 35,
+    "date": "2026-09-29 23:31:02"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 33,
+    "date": "2026-09-29 01:16:51"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 31,
+    "date": "2026-09-27 14:29:34"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 30,
+    "date": "2026-09-26 22:38:55"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 29,
+    "date": "2026-09-26 17:39:58"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 29,
+    "date": "2026-09-26 14:44:37"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 24,
+    "date": "2026-09-25 23:39:52"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7160251276040642,
+    "generations": 24,
+    "date": "2026-09-25 22:47:14"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.1137547020015818,
+      "description_similarity": 0.0,
+      "title_match": 0.28455145701180573,
+      "description_match": 0.049534076140635916,
+      "title_ngram_match": 0.06552034127663509,
+      "description_ngram_match": 0.4866394235693414
+    },
+    "best": 0.7434653685942703,
+    "mean": 0.7096883651572203,
+    "generations": 22,
+    "date": "2026-09-24 22:34:05"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.12401285157788207,
+      "description_similarity": 0.01708122533832935,
+      "title_match": 0.273668513754302,
+      "description_match": 0.07726227197928016,
+      "title_ngram_match": 0.12656624994404728,
+      "description_ngram_match": 0.3814088874061591
+    },
+    "best": 0.7340072134499597,
+    "mean": 0.7138973972056007,
+    "generations": 15,
+    "date": "2026-09-24 14:27:15"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.12401285157788207,
+      "description_similarity": 0.01708122533832935,
+      "title_match": 0.273668513754302,
+      "description_match": 0.07726227197928016,
+      "title_ngram_match": 0.12656624994404728,
+      "description_ngram_match": 0.3814088874061591
+    },
+    "best": 0.7340072134499597,
+    "mean": 0.7138973972056007,
+    "generations": 15,
+    "date": "2026-09-24 13:38:30"
+  },
+  {
+    "weights": {
+      "title_similarity": 0.14293524048652295,
+      "description_similarity": 0.04374225559269088,
+      "title_match": 0.6102422898641867,
+      "description_match": 0.025663415356183855,
+      "title_ngram_match": 0.019780739955275933,
+      "description_ngram_match": 0.15763605874513964
+    },
+    "best": 0.7153715805509424,
+    "mean": 0.6484959413434751,
+    "generations": 1,
+    "date": "2026-09-22 16:27:51"
+  }
 ]

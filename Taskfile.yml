@@ -27,3 +27,17 @@ tasks:
       - setup
     cmds:
       - .venv/Scripts/python.exe scripts/train_weights.py
+
+  train-resume:
+    desc: Reanuda el entrenamiento desde el último checkpoint guardado
+    deps:
+      - setup
+    cmds:
+      - .venv/Scripts/python.exe scripts/train_weights.py --resume
+
+  checkpoint-status:
+    desc: Muestra el estado actual del entrenamiento y el checkpoint
+    deps:
+      - setup
+    cmds:
+      - .venv/Scripts/python.exe scripts/checkpoint_status.py

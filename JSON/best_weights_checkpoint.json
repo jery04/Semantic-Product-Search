@@ -1,14 +1,14 @@
 {
   "weights": {
-    "title_similarity": 0.14293524048652295,
-    "description_similarity": 0.04374225559269088,
-    "title_match": 0.6102422898641867,
-    "description_match": 0.025663415356183855,
-    "title_ngram_match": 0.019780739955275933,
-    "description_ngram_match": 0.15763605874513964
+    "title_similarity": 0.1137547020015818,
+    "description_similarity": 0.0,
+    "title_match": 0.28455145701180573,
+    "description_match": 0.049534076140635916,
+    "title_ngram_match": 0.06552034127663509,
+    "description_ngram_match": 0.4866394235693414
   },
-  "best": 0.7153715805509424,
-  "mean": 0.6484959413434751,
-  "generations": 1,
-  "date": "2026-09-22 16:27:51"
+  "best": 0.7434653685942703,
+  "mean": 0.718455023812536,
+  "generations": 29,
+  "date": "2026-10-01 22:21:07"
 }

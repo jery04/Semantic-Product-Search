@@ -56,6 +56,7 @@ TRAINING_QUERIES: list[dict[str, Any]] = []
 parser = argparse.ArgumentParser(description="Entrena los pesos del buscador semántico.")
 parser.add_argument("--quiet", action="store_true", help="Reduce la salida de consola para facilitar ejecuciones largas.")
 parser.add_argument("--generations", type=int, default=GENERATIONS, help="Número máximo de generaciones del algoritmo genético.")
+parser.add_argument("--resume", action="store_true", help="Reanuda el entrenamiento desde el último checkpoint guardado.")
 
 
 def load_resources() -> tuple[Any, list[dict[str, str]]]:
@@ -329,65 +330,98 @@ def genetic_algorithm(
     *,
     verbose: bool = True,
     max_generations: int = GENERATIONS,
+    starting_generation: int = 1,
+    initial_best_genome: list[float] | None = None,
+    initial_best_fitness: float = float("-inf"),
+    initial_mean_fitness: float = float("-inf"),
 ) -> tuple[list[float], float, float, int]:
-    """Optimiza los seis pesos con torneo, cruce, mutación y elitismo."""
-    population = make_initial_population(rng)
-    best_genome = population[-1]
-    best_fitness = float("-inf")
-    mean_fitness = float("-inf")
+    """Optimiza los seis pesos con torneo, cruce, mutación y elitismo.
+    
+    Puede reanudar desde un checkpoint anterior proporcionales starting_generation,
+    initial_best_genome, initial_best_fitness e initial_mean_fitness.
+    """
+    # Inicializa población: si viene un mejor genoma previo, genera la
+    # población alrededor de ese genoma para continuar la búsqueda local.
+    if initial_best_genome:
+        base = normalize_genome(initial_best_genome)
+        population = [list(base)]
+        while len(population) < POP_SIZE:
+            population.append(mutate(base, rng))
+    else:
+        population = make_initial_population(rng)
+
+    best_genome = initial_best_genome if initial_best_genome else population[-1]
+    best_fitness = initial_best_fitness
+    mean_fitness = initial_mean_fitness
     stagnant_generations = 0
     completed_generations = 0
-    for generation in range(1, max_generations + 1):
-        scored = [
-            (evaluate_individual(genome, products_details, train_queries), genome)
-            for genome in population
-        ]
-        scored.sort(key=lambda item: item[0], reverse=True)
-        fitnesses = [item[0] for item in scored]
-        current_fitness, current_genome = scored[0]
-        mean_fitness = statistics.fmean(fitnesses)
-        best_weights = dict(zip(WEIGHT_NAMES, current_genome))
-        if verbose and (generation == 1 or generation == max_generations or generation % 5 == 0):
-            print(
-                f"gen={generation:02d}: best={current_fitness:.4f} "
-                f"; mean={statistics.fmean(fitnesses):.4f} "
-                f"; std={statistics.pstdev(fitnesses):.4f} "
-                f"; {{ ts={best_weights['title_similarity']:.4f} , "
-                f"ds={best_weights['description_similarity']:.4f} , "
-                f"tm={best_weights['title_match']:.4f} , "
-                f"dm={best_weights['description_match']:.4f} , "
-                f"tn={best_weights['title_ngram_match']:.4f} , "
-                f"dn={best_weights['description_ngram_match']:.4f} }}"
-            )
-        completed_generations = generation
-        if current_fitness > best_fitness + IMPROVEMENT_TOLERANCE:
-            best_fitness = current_fitness
-            best_genome = list(current_genome)
-            stagnant_generations = 0
-            save_checkpoint(
-                dict(zip(WEIGHT_NAMES, normalize_genome(best_genome))),
-                best_fitness,
-                mean_fitness,
-                generation,
-            )
-        else:
-            stagnant_generations += 1
-        if stagnant_generations >= STAGNATION_LIMIT:
-            break
-        population_scores = {
-            id(genome): score for score, genome in scored
-        }
-        next_population = [list(genome) for _, genome in scored[:ELITE]]
-        while len(next_population) < POP_SIZE:
-            if rng.random() < RANDOM_IMMIGRANT_RATE:
-                next_population.append(
-                    normalize_genome([rng.random() for _ in WEIGHT_NAMES])
+    if starting_generation > 1 and verbose:
+        print(f"Reanudando desde generación {starting_generation}...")
+
+    try:
+        for generation in range(starting_generation, max_generations + 1):
+            scored = [
+                (evaluate_individual(genome, products_details, train_queries), genome)
+                for genome in population
+            ]
+            scored.sort(key=lambda item: item[0], reverse=True)
+            fitnesses = [item[0] for item in scored]
+            current_fitness, current_genome = scored[0]
+            mean_fitness = statistics.fmean(fitnesses)
+            best_weights = dict(zip(WEIGHT_NAMES, current_genome))
+            if verbose and (generation == 1 or generation == max_generations or generation % 5 == 0):
+                print(
+                    f"gen={generation:02d}: best={current_fitness:.4f} "
+                    f"; mean={statistics.fmean(fitnesses):.4f} "
+                    f"; std={statistics.pstdev(fitnesses):.4f} "
+                    f"; {{ ts={best_weights['title_similarity']:.4f} , "
+                    f"ds={best_weights['description_similarity']:.4f} , "
+                    f"tm={best_weights['title_match']:.4f} , "
+                    f"dm={best_weights['description_match']:.4f} , "
+                    f"tn={best_weights['title_ngram_match']:.4f} , "
+                    f"dn={best_weights['description_ngram_match']:.4f} }}"
                 )
-                continue
-            parent_a = _tournament_selection(population, population_scores, rng)
-            parent_b = _tournament_selection(population, population_scores, rng)
-            next_population.append(mutate(crossover(parent_a, parent_b, rng), rng))
-        population = next_population
+            completed_generations = generation
+            if current_fitness > best_fitness + IMPROVEMENT_TOLERANCE:
+                best_fitness = current_fitness
+                best_genome = list(current_genome)
+                stagnant_generations = 0
+                save_checkpoint(
+                    dict(zip(WEIGHT_NAMES, normalize_genome(best_genome))),
+                    best_fitness,
+                    mean_fitness,
+                    generation,
+                )
+            else:
+                stagnant_generations += 1
+            if stagnant_generations >= STAGNATION_LIMIT:
+                break
+            population_scores = {
+                id(genome): score for score, genome in scored
+            }
+            next_population = [list(genome) for _, genome in scored[:ELITE]]
+            while len(next_population) < POP_SIZE:
+                if rng.random() < RANDOM_IMMIGRANT_RATE:
+                    next_population.append(
+                        normalize_genome([rng.random() for _ in WEIGHT_NAMES])
+                    )
+                    continue
+                parent_a = _tournament_selection(population, population_scores, rng)
+                parent_b = _tournament_selection(population, population_scores, rng)
+                next_population.append(mutate(crossover(parent_a, parent_b, rng), rng))
+            population = next_population
+    except KeyboardInterrupt:
+        # Guardar el mejor estado conocido antes de propagar la interrupción
+        try:
+            last_best = dict(zip(WEIGHT_NAMES, normalize_genome(best_genome)))
+            save_checkpoint(last_best, float(best_fitness), float(mean_fitness), generation if 'generation' in locals() else starting_generation - 1)
+            if verbose:
+                print(f"\nInterrupción: checkpoint guardado en generación {generation if 'generation' in locals() else starting_generation - 1}.")
+        except Exception:
+            # No hacer fallar la excepción original por un error al salvar
+            pass
+        raise
+
     return normalize_genome(best_genome), best_fitness, mean_fitness, completed_generations
 
 def save_best_weights(
@@ -445,6 +479,16 @@ def save_checkpoint(weights: dict[str, float], best: float, mean: float, generat
     with CHECKPOINT_PATH.open("w", encoding="utf-8") as file:
         json.dump(payload, file, ensure_ascii=False, indent=2)
 
+def load_checkpoint() -> dict[str, Any] | None:
+    """Carga el checkpoint guardado si existe, None en caso contrario."""
+    if not CHECKPOINT_PATH.exists():
+        return None
+    try:
+        with CHECKPOINT_PATH.open("r", encoding="utf-8") as file:
+            return json.load(file)
+    except (json.JSONDecodeError, IOError):
+        return None
+
 def _metrics_for_queries_and_print(
     products_details: Sequence[tuple[Any, ...]], train_queries: Sequence[dict[str, Any]],
     test_queries: Sequence[dict[str, Any]], trained_weights: dict[str, float],
@@ -479,6 +523,7 @@ def main() -> None:
     args = parser.parse_args()
     quiet = args.quiet
     max_generations = args.generations
+    resume = args.resume
     try:
         if quiet:
             print("Modo silencioso activado: se reducirá la salida de entrenamiento.")
@@ -493,6 +538,28 @@ def main() -> None:
         print("Dividiendo train/test...")
         split = max(1, int(len(TRAINING_QUERIES) * 0.7))
         train_queries, test_queries = TRAINING_QUERIES[:split], TRAINING_QUERIES[split:]
+        
+        # Verificar si hay checkpoint para reanudar
+        checkpoint = None
+        starting_generation = 1
+        initial_best_genome = None
+        initial_best_fitness = float("-inf")
+        initial_mean_fitness = float("-inf")
+        
+        if resume:
+            checkpoint = load_checkpoint()
+            if checkpoint:
+                starting_generation = checkpoint.get("generations", 0) + 1
+                initial_best_genome = list(checkpoint.get("weights", {}).values()) if checkpoint.get("weights") else None
+                initial_best_fitness = checkpoint.get("best", float("-inf"))
+                initial_mean_fitness = checkpoint.get("mean", float("-inf"))
+                checkpoint_date = checkpoint.get("date", "desconocida")
+                if not quiet:
+                    print(f"\n✓ Checkpoint cargado (fecha: {checkpoint_date}, generación: {starting_generation - 1})")
+                    print(f"  Mejor fitness anterior: {initial_best_fitness:.4f}\n")
+            elif not quiet:
+                print("⚠ No se encontró checkpoint para reanudar. Iniciando nuevo entrenamiento.\n")
+        
         print("Generando población inicial...")
         print("Iniciando evolución...")
         if not quiet:
@@ -502,7 +569,11 @@ def main() -> None:
                 "dn=description_ngram_match\n"
             )
         trained_genome, best, mean, generations = genetic_algorithm(
-            products_for_search, train_queries, rng, verbose=not quiet, max_generations=max_generations
+            products_for_search, train_queries, rng, verbose=not quiet, max_generations=max_generations,
+            starting_generation=starting_generation, 
+            initial_best_genome=initial_best_genome,
+            initial_best_fitness=initial_best_fitness,
+            initial_mean_fitness=initial_mean_fitness
         )
         trained_weights = dict(zip(WEIGHT_NAMES, trained_genome))
         print("Evaluación final...")
@@ -515,10 +586,13 @@ def main() -> None:
         )
         print("\nPesos guardados en best_weights.json")
     except KeyboardInterrupt:
-        print("\nInterrupción detectada: guardando checkpoint del mejor estado disponible...")
-        if "best_genome" in locals():
-            last_best = dict(zip(WEIGHT_NAMES, normalize_genome(best_genome)))
-            save_checkpoint(last_best, float(best_fitness), float(mean_fitness), int(generations) if 'generations' in locals() else 0)
+        print("\nInterrupción detectada: el mejor estado ha sido guardado en el checkpoint.")
+        print(f"Puedes reanudar el entrenamiento con: python scripts/train_weights.py --resume")
+        checkpoint = load_checkpoint()
+        if checkpoint:
+            gen = checkpoint.get("generations", 0)
+            fitness = checkpoint.get("best", 0)
+            print(f"Checkpoint actual: generación {gen}, fitness={fitness:.4f}")
         raise
 
 NLP: Any = None
